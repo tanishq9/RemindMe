@@ -16,9 +16,9 @@
         android:textStyle="bold" />
 
     <TextView
-        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:text="Long Press Title to delete Task"
         android:textAlignment="center"
         android:textSize="12dp"
@@ -28,7 +28,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
-        android:text="Tap Title to view the description"
+        android:text="Tap task name to view the description"
         android:textAlignment="center"
         android:textSize="12dp"
         android:textStyle="bold" />
@@ -37,6 +37,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
+        android:text="DONE:Green =>Task excecuted and DONE:Red =>Yet to be excecuted"
+        android:textAlignment="center"
+        android:textSize="12dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
         android:text="Get notified about your scheduled tasks on exact time   "
         android:textAlignment="center"
         android:textSize="12dp"
@@ -46,7 +55,7 @@
         android:id="@+id/rv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="79dp">
+        android:layout_marginTop="100dp">
 
     </android.support.v7.widget.RecyclerView>
 

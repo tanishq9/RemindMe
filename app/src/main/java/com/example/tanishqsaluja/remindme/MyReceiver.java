@@ -38,18 +38,19 @@ public class MyReceiver extends BroadcastReceiver {
         Log.e("TEST","inside receive method");
         Intent i = new Intent(context, MainActivity.class);
         int id=intent.getIntExtra("noteid",0);
-        //PendingIntent pendingIntent=PendingIntent.getActivity(context, (int) System.currentTimeMillis(),i,0);
+        PendingIntent pendingIntent=PendingIntent.getActivity(context, (int) System.currentTimeMillis(),i,0);
         Notification notification = new NotificationCompat.Builder(context, "test")
-                .setContentTitle("Time for the task: "+intent.getStringExtra("title"))
+                .setContentTitle("Time for the task : "+intent.getStringExtra("title"))
                 .setSmallIcon(R.mipmap.ic_launcher_foreground)
-                .setDefaults(Notification.DEFAULT_VIBRATE)
-                .setPriority(Notification.PRIORITY_MAX)
+                .setContentIntent(pendingIntent)
                 .setVibrate(new long[] { 0, 5000,1000,5000,1000 })
-        //        .setLights(Color.RED,3000,3000)
-        //        .setSound(Uri.parse(String.valueOf(R.raw.ring)))
+                .setPriority(Notification.PRIORITY_MAX)
+                .setAutoCancel(false)
+                .setCategory(Notification.CATEGORY_CALL)
+                .setDefaults(Notification.FLAG_INSISTENT)
+                //.setOngoing(true)
                 .build();
-        notification.defaults|= Notification.DEFAULT_SOUND;
-        notification.defaults|= Notification.DEFAULT_LIGHTS;
+        notification.sound = Uri.parse("android.resource://"+context.getPackageName()+"/"+R.raw.ring);
         notification.defaults|= Notification.DEFAULT_VIBRATE;
         NotificationManager notificationManager = (NotificationManager) context.getSystemService(NOTIFICATION_SERVICE);
         notificationManager.notify(123, notification);

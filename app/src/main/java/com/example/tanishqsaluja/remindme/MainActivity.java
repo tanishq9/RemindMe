@@ -1,6 +1,7 @@
 package com.example.tanishqsaluja.remindme;
 
 import android.app.AlarmManager;
+import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -22,8 +23,11 @@ import android.support.v7.widget.SearchView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 
 public class MainActivity extends AppCompatActivity implements SearchView.OnQueryTextListener {
     NotesDB notesDB;
@@ -36,6 +40,21 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        NotificationManager notificationManager = (NotificationManager) this.getSystemService(NOTIFICATION_SERVICE);
+        if(notificationManager!=null){
+            notificationManager.cancelAll();
+        }
+        /*Calendar c = Calendar.getInstance();
+        SimpleDateFormat df;
+        */
+        String currentDateTimeString = DateFormat.getDateInstance().format(new Date());
+// textView is the TextView view that should display it
+   /*     df = new SimpleDateFormat("kk:mm");
+        String currTime = df.format(c.getTime());
+   */
+        Log.e("test",currentDateTimeString+">>>>>>>>>>>>");
+        getSupportActionBar().setTitle(currentDateTimeString);
+
         RecyclerView recyclerView=findViewById(R.id.rv);
         notesDB=new NotesDB(this);
         arrayList=new ArrayList<>();
